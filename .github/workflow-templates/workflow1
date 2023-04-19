@@ -1,4 +1,4 @@
-name: Workflow de démonstration
+name: Workflow exercice 2.1
 
 on:
   push:
