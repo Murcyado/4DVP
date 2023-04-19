@@ -10,7 +10,7 @@ jobs:
     - name: Checkout du code source
       uses: actions/checkout@v2
       with:
-        repository: tldr-pages/tldr-python-client
+        repository: tldr-python-client
         ref: 3.1.0
     - name: Configuration de Python 3.10
       uses: actions/setup-python@v2
