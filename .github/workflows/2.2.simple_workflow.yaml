@@ -1,0 +1,24 @@
+name: Workflow 2.2
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  first_job:
+    runs-on: windows-latest
+    steps:
+    - name: Afficher le message du premier job
+      run: echo "Ceci est le premier job."
+
+  second_job:
+    runs-on: windows-latest
+    steps:
+    - name: Afficher le message du deuxième job
+      run: echo "Ceci est le deuxième job."
+
+  third_job:
+    runs-on: windows-latest
+    steps:
+    - name: Afficher le message du troisième job
+      run: echo "Ceci est le troisième job."
