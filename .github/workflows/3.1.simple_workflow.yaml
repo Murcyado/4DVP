@@ -15,7 +15,8 @@ on:
         description: "Classe de personnage"
         required: true
         default: "jedi"
-        options: ["jedi", "sith", "rebel"]
+        options: ["jedi", "sith", "rebel"] 
+        type: choice
 
 jobs:
   player_infos:
