@@ -1,4 +1,4 @@
-name: Mon workflow
+name: Workflow 3.3
 
 on:
   push:
