@@ -1,0 +1,27 @@
+name: Mon workflow
+
+on:
+  push:
+
+jobs:
+  testing_phase:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout du code source
+      uses: actions/checkout@v2
+      with:
+        repository: tldr-pages/tldr-python-client
+        ref: 3.1.0
+    - name: Configuration de Python 3.10
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.10
+    - name: Installation des dépendances
+      run: pip install -r requirements.txt
+    - name: Installation de pytest
+      run: pip install pytest
+    - name: Exécution des tests avec pytest
+      run: pytest
+    - name: Récupération du statut de sortie
+      if: ${{ always() }}
+      run: echo "Le statut de sortie est $?"
