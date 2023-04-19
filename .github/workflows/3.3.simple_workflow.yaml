@@ -1,16 +1,17 @@
-name: Workflow 3.3
-
-on:
-  push:
-    branches: 
-      - '*'
-  workflow_dispatch:
-  schedule:
-    - cron: '*/10 * * * *'
-
-jobs:
-  triggered_by:
-    runs-on: windows-latest
-    steps:
-    - name: Afficher l'événement déclencheur
-      run: echo "Le job a été déclenché par un événement de type ${{ github.event_name }}"
+#name: Workflow 3.3
+#
+#on:
+#  push:
+#    branches: 
+#      - '*'
+#  workflow_dispatch:
+#  schedule:
+#    - cron: '*/10 * * * *'
+#
+#jobs:
+#  triggered_by:
+#    runs-on: windows-latest
+#    steps:
+#    - name: Afficher l'événement déclencheur
+#      run: echo "Le job a été déclenché par un événement de type ${{ github.event_name }}"
+#
