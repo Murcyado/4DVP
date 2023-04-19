@@ -1,0 +1,12 @@
+name: Workflow de démonstration
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  say_hello:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Afficher Hello, world!
+      run: echo "Hello, world!"
