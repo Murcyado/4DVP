@@ -9,7 +9,7 @@ jobs:
   execute_script:
     runs-on: windows-latest
     steps:
-    - name: Checkout du code source
+    - name: Checkout du code python
       uses: actions/checkout@v2
     - name: Configuration de Python 3.10
       uses: actions/setup-python@v2
