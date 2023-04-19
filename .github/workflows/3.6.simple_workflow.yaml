@@ -1,4 +1,4 @@
-name: Workflow 3.6
+name: Testing Workflow
 
 on: [push]
 
@@ -28,6 +28,6 @@ jobs:
     - name: Run tests
       run: pytest
 
-    - name: Set job status
-      if: ${{ always() }}
+    - name: Print job status
+      if: always()
       run: echo "Job status: ${{ job.status }}"
