@@ -1,27 +1,33 @@
 name: Workflow 3.6
 
-on:
-  push:
+on: [push]
 
 jobs:
   testing_phase:
+    name: Testing Phase
     runs-on: windows-latest
+
     steps:
-    - name: Checkout du code source
+    - name: Checkout code
       uses: actions/checkout@v2
       with:
-        repository: tldr-python-client
-        ref: 3.1.0
-    - name: Configuration de Python 3.10
+        ref: "3.1.0"
+        repository: tldr-pages/tldr-python-client
+
+    - name: Setup Python
       uses: actions/setup-python@v2
       with:
         python-version: 3.10
-    - name: Installation des dépendances
+
+    - name: Install dependencies
       run: pip install -r requirements.txt
-    - name: Installation de pytest
+
+    - name: Install pytest
       run: pip install pytest
-    - name: Exécution des tests avec pytest
+
+    - name: Run tests
       run: pytest
-    - name: Récupération du statut de sortie
+
+    - name: Set job status
       if: ${{ always() }}
-      run: echo "Le statut de sortie est $?"
+      run: echo "Job status: ${{ job.status }}"
