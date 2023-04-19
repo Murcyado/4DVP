@@ -2,7 +2,6 @@ name: Workflow 2.2
 
 on:
   push:
-    branches: [ main ]
 
 jobs:
   first_job:
