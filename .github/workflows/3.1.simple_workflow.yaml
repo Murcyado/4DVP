@@ -6,15 +6,12 @@ on:
       username:
         description: "Nom d'utilisateur"
         required: true
-        default: "noah"
       level:
         description: "Niveau"
         required: true
-        default: "1"
       class:
         description: "Classe de personnage"
         required: true
-        default: "jedi"
         options: ["jedi", "sith", "rebel"] 
         type: choice
 
