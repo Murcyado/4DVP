@@ -1,21 +1,26 @@
-name: Workflow 5.3
-
-on: [push]
-
+name: "Workflow 5.3"
+on:
+  push:
 jobs:
   prepare_tests:
-    runs-on: ubuntu-latest
+    name: "Prepare Tests"
+    runs-on: "ubuntu-latest"
+    outputs:
+      HOST: ${{ steps.setup_host.outputs.HOST }}
+      DATABASE: ${{ steps.setup_host.outputs.DATABASE }}
     steps:
-    - name: Configuration de l'hôte et de la base de données
-      run: |
-        echo "::set-output name=HOST::srv1"
-        echo "::set-output name=DATABASE::prep002"
-
+      - name: "Setup Host"
+        id: setup_host
+        run: |
+          echo "HOST=srv1" >> ${{ github.workspace }}/output.txt
+          echo "DATABASE=prep002" >> ${{ github.workspace }}/output.txt
+        shell: bash
   display_infos:
-    runs-on: ubuntu-latest
+    name: "Display Infos"
     needs: prepare_tests
+    runs-on: "ubuntu-latest"
     steps:
-    - name: Récupération des variables de l'étape précédente
-      run: |
-        echo "HOST=${{ needs.prepare_tests.outputs.HOST }}"
-        echo "DATABASE=${{ needs.prepare_tests.outputs.DATABASE }}"
+      - name: "Print Variables"
+        run: |
+          echo "HOST: ${{ needs.prepare_tests.outputs.HOST }}"
+          echo "DATABASE: ${{ needs.prepare_tests.outputs.DATABASE }}"
