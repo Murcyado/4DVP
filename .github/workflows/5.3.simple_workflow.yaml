@@ -1,0 +1,21 @@
+name: Workflow 5.3
+
+on: [push]
+
+jobs:
+  prepare_tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Configuration de l'hôte et de la base de données
+      run: |
+        echo "::set-output name=HOST::srv1"
+        echo "::set-output name=DATABASE::prep002"
+
+  display_infos:
+    runs-on: ubuntu-latest
+    needs: prepare_tests
+    steps:
+    - name: Récupération des variables de l'étape précédente
+      run: |
+        echo "HOST=${{ needs.prepare_tests.outputs.HOST }}"
+        echo "DATABASE=${{ needs.prepare_tests.outputs.DATABASE }}"
