@@ -5,7 +5,7 @@ on: [push]
 jobs:
   testing_phase:
     name: Testing Phase
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
