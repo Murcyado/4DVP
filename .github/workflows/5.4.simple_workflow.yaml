@@ -1,0 +1,28 @@
+name: Saving Artefact
+on:
+  push:
+
+jobs:
+  testing_phase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Action
+        uses: actions/checkout@v3
+        with:
+          repository: tldr-pages/tldr-python-client
+          ref: "3.1.0"
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Install pytest 
+        run: pip install pytest pytest-html
+      - name: Run tests with Pytest -Report
+        run: pytest --html=report.html || true
+      - name: Sauvegarder le rapport de tests
+        uses: actions/upload-artifact@v3
+        with:
+          name: pytest-report
+          path: report.html
