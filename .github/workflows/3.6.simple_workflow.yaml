@@ -1,29 +1,30 @@
-name: Testing Workflow
+name: "3.6-test-workflow"
 
-on: [push]
+on:
+       push:
 
 jobs:
-  testing_phase:
-    name: Testing Phase
-    runs-on: windows-latest
+       testing_phase:
+               name: "Running test"
+               runs-on: "ubuntu:latest"
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      with:
-        ref: "3.1.0"
-        repository: https://github.com/tldr-pages/tldr-python-client
+               steps:
+                       - uses: actions/checkout@v3
+                         with:
+                               repository: https://github.com/tldr-pages/tldr-python-client
+                               ref: "3.1.0"
 
-    - name: Setup Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.10
+                       - uses: actions/setup-python@v3
+                         with:
+                               python-version: "3.10"
+                       - name: "Installing dependencies"
+                         run: |
+                               pip install -r requirements.txt
 
-    - name: Install dependencies
-      run: pip install -r requirements.txt
+                       - name: "Installing pytest"
+                         run: |
+                               pip install pytest
 
-    - name: Install pytest
-      run: pip install pytest
-
-    - name: Run tests
-      run: pytest
+                       - name: "Running tests"
+                         run: |
+                               pytest
