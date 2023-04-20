@@ -27,7 +27,3 @@ jobs:
 
     - name: Run tests
       run: pytest
-
-    - name: Print job status
-      if: always()
-      run: echo "Job status: ${{ job.status }}"
