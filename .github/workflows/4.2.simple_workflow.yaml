@@ -1,0 +1,12 @@
+name: Workflow 4.2
+
+on: [push]
+
+jobs:
+  confidential_data:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Affichage de la valeur du secret
+      env:
+        SUPER_SECRET: ${{ secrets.SUPER_SECRET }}
+      run: echo "La valeur de SUPER_SECRET est \"$SUPER_SECRET\"."
