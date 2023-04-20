@@ -1,0 +1,12 @@
+name: Workflow 4.1
+
+on: [push]
+
+jobs:
+  display_env:
+    runs-on: windows-latest
+    steps:
+    - name: Affichage de la variable d'environnement
+      env:
+        MESSAGE: 'Ceci est une variable d\'environnement'
+      run: echo $MESSAGE
