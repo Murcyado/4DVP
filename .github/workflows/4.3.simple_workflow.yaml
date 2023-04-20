@@ -1,0 +1,17 @@
+name: Workflow 4.3
+
+on: [push]
+
+jobs:
+  version_python:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: ["3.8", "3.9", "3.10"]
+    steps:
+    - name: Configuration de Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.version }}
+    - name: Affichage de la version de Python
+      run: python --version
